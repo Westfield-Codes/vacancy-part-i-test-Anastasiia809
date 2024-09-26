@@ -1,5 +1,38 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"hostRequirements": {
+	  "cpus": 4
+	},
+	"waitFor": "onCreateCommand",
+	"updateContentCommand": "npm install",
+	"postCreateCommand": "",
+	"postAttachCommand": {
+	  "server": "npm run dev"
+	},
+	"customizations": {
+	  "codespaces": {
+		"openFiles": [
+		  "src/index.jsx"
+		]
+	  },
+	  "vscode": {
+		"extensions": [
+		  "esbenp.prettier-vscode",
+		  "dbaeumer.vscode-eslint",
+		  "GitHub.copilot",
+		  "GitHub.copilot-chat"
+		],
+		"settings": {
+		  "editor.formatOnSave": true,
+		  "terminal.integrated.defaultProfile.linux": "bash"
+		}
+	   },
+	},
+	"portsAttributes": {
+	  "5173": {
+		"label": "Application",
+		"onAutoForward": "openPreview"
+	  }
+	},
+	"forwardPorts": [5173]
   }
-}
